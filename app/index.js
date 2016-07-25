@@ -1,5 +1,5 @@
 import { AppContainer } from 'containers'
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import injectTapEventPlugin from 'react-tap-event-plugin'
 
-injectTapEventPlugin();
+injectTapEventPlugin()
 ReactDOM.render(<AppContainer />, document.getElementById('app'));
