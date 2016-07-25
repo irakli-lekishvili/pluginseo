@@ -1,0 +1,19 @@
+{
+  "name": "pluginseo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lekishvili/pluginseo.git"
+  },
+  "author": "Irakli Lekishvili",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lekishvili/pluginseo/issues"
+  },
+  "homepage": "https://github.com/lekishvili/pluginseo#readme"
+}
