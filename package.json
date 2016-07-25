@@ -4,7 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server --progress --colors",
+    "lint": "standard",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-decorators-legacy"
+    ]
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "React"
+    ]
   },
   "repository": {
     "type": "git",
