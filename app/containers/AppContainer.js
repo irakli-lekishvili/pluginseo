@@ -1,5 +1,5 @@
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Header, Checker, Table } from 'components'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { Header, Checker, Result } from 'components'
 
 export default class AppContainer extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export default class AppContainer extends React.Component {
           <Checker />
         </MuiThemeProvider>
         <MuiThemeProvider>
-          <Table />
+          <Result />
         </MuiThemeProvider>
       </div>
     )

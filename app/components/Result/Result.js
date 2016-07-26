@@ -1,10 +1,10 @@
 import connectToStores from 'alt-utils/lib/connectToStores'
-import {Tabs, Tab} from 'material-ui/Tabs'
 import { SeoStore } from 'stores'
+import {Tabs, Tab} from 'material-ui/Tabs'
 import { SeverityIcon, SeverityText } from 'helpers/TableHelpers'
 
 @connectToStores
-export default class Table extends React.Component {
+export default class Result extends React.Component {
   static getStores() {
     return [SeoStore]
   }

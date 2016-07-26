@@ -1,5 +1,4 @@
 import alt from 'alt'
-import immutable from 'alt-utils/lib/ImmutableUtil'
 import Immutable from 'immutable'
 import { createStore, bind } from 'alt-utils/lib/decorators'
 import { SeoActions } from 'actions'
@@ -37,5 +36,3 @@ export default class SeoStore {
     // this.state.IS_FETCHING = false
   }
 }
-
-// export default alt.createStore(immutable(SeoStore)) 
