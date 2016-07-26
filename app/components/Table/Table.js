@@ -1,22 +1,10 @@
 import connectToStores from 'alt-utils/lib/connectToStores'
 import {Tabs, Tab} from 'material-ui/Tabs'
 import { SeoStore } from 'stores'
-
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-};
+import { SeverityIcon } from 'helpers/IconHelpers'
 
 @connectToStores
 export default class Table extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   static getStores() {
     return [SeoStore]
   }
@@ -27,7 +15,11 @@ export default class Table extends React.Component {
 
   _renderCheck(item, index) {
     return (
-      <Tab key={index} label={item.get('title')}>
+      <Tab
+        key={index}
+        icon={SeverityIcon(item.get('severity'))}
+        label={item.get('title')}
+      >
         <h1>HOW TO FIX YOUR {item.get('title').toUpperCase()}</h1>
       </Tab>
     )
