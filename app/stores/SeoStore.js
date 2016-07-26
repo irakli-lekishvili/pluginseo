@@ -1,4 +1,6 @@
 import alt from 'alt'
+import immutable from 'alt-utils/lib/ImmutableUtil'
+import Immutable from 'immutable'
 import { createStore, bind } from 'alt-utils/lib/decorators'
 import { SeoActions } from 'actions'
 import SeoSource from 'sources/SeoSource'
@@ -7,7 +9,8 @@ import SeoSource from 'sources/SeoSource'
 export default class SeoStore {
   constructor() {
     this.state = {
-      todos: []
+      todos: [],
+      seo: Immutable.Map({})
     }
 
     this.registerAsync(SeoSource)
@@ -15,21 +18,24 @@ export default class SeoStore {
 
   @bind(SeoActions.updateTodo)
   updateTodo(todo) {
-    this.setState({ todos: this.state.todos.concat(todo) })
+    // this.setState({ todos: this.state.todos.concat(todo) })
   }
 
   @bind(SeoActions.FETCH_SEO)
   onFetchSeo() {
-    this.state.IS_FETCHING = true
+    // this.state.IS_FETCHING = true
   }
 
   @bind(SeoActions.UPDATE_SEO)
   updateSeo(data) {
-    this.state.IS_FETCHING = false
+    this.state.seo = Immutable.fromJS(data)
+    // this.state.seo.get('checks').map(x=> console.log(x))
   }
 
   @bind(SeoActions.SEO_FAILED)
   onSeoFaild(message) {
-    this.state.IS_FETCHING = false
+    // this.state.IS_FETCHING = false
   }
 }
+
+// export default alt.createStore(immutable(SeoStore)) 

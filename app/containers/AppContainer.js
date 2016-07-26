@@ -5,10 +5,12 @@ export default class AppContainer extends React.Component {
   render() {
     return (
       <div>
-      <MuiThemeProvider>
-        <Checker />
-      </MuiThemeProvider>
-      <Table />
+        <MuiThemeProvider>
+          <Checker />
+        </MuiThemeProvider>
+        <MuiThemeProvider>
+          <Table />
+        </MuiThemeProvider>
       </div>
     )
   }

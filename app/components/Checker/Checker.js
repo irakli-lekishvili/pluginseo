@@ -27,20 +27,12 @@ export default class Checker extends React.Component {
   render() {
     return (
       <div>
-        {/* <Spinner spinnerName='double-bounce' /> */}
-        <ul>
-          {this.props.todos.map((todo) => {
-            return (
-              <li key={todo.id}>{todo.text}</li>
-              );
-          })}
-        </ul>
+        <Spinner spinnerName='double-bounce' />
         <TextField
           hintText='Enter your domain here'
           value={this.state.url}
           onChange={(text) => this.setState({url: text.target.value})}
         />
-        <input type='text' value={this.state.url}/>
         <RaisedButton onClick={::this.onClick}> Check </RaisedButton>
       </div>
     )

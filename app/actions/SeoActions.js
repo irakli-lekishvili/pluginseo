@@ -1,4 +1,5 @@
 import alt from 'alt'
+import Immutable from 'immutable'
 import { createActions } from 'alt-utils/lib/decorators'
 
 @createActions(alt)
@@ -7,13 +8,13 @@ export default class SeoActions {
     return { url }
   }
 
-
   fetchSeo() {
     return {}
   }
 
   updateSeo(response) {
-    return { ...response.data }
+    let list = response.data
+    return { ...list }
   }
 
   seoFailed(message) {
