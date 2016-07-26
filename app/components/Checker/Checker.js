@@ -5,8 +5,18 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { SeoStore } from 'stores'
 import { SeoActions } from 'actions'
 
+import Spinner from 'react-spinkit'
+
 @connectToStores
 export default class extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      url: ''
+    }
+    SeoStore.fetchSeo()
+  }
+
   static getStores() {
     return [SeoStore]
   }
@@ -17,7 +27,7 @@ export default class extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.onClick}>Click</button>
+        {/* <Spinner spinnerName='double-bounce' /> */}
         <ul>
           {this.props.todos.map((todo) => {
             return (
@@ -25,13 +35,18 @@ export default class extends React.Component {
               );
           })}
         </ul>
-        {/* <TextField hintText='Enter your domain here'/> */}
-        {/* <RaisedButton> Check </RaisedButton> */}
+        <TextField
+          hintText='Enter your domain here'
+          value={this.state.url}
+          onChange={(text) => this.setState({url: text.target.value})}
+        />
+        <input type='text' value={this.state.url}/>
+        <RaisedButton onClick={::this.onClick}> Check </RaisedButton>
       </div>
     )
   }
 
   onClick() {
-    SeoActions.updateTodo(1, 'ravi')
+    SeoStore.fetchSeo()
   }
 }

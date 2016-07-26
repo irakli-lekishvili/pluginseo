@@ -24,6 +24,11 @@ module.exports = {
       test: /\.js?$/,
       exclude: /node_modules/,
       loader: 'babel'
+    },
+    {
+      test: /\.css$/,
+      loaders: ['style-loader', 'css-loader', 'postcss-loader']
     }]
   },
+  postcss: () => [require('autoprefixer'), require('precss')]
 };
