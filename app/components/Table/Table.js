@@ -1,7 +1,7 @@
 import connectToStores from 'alt-utils/lib/connectToStores'
 import {Tabs, Tab} from 'material-ui/Tabs'
 import { SeoStore } from 'stores'
-import { SeverityIcon } from 'helpers/IconHelpers'
+import { SeverityIcon, SeverityText } from 'helpers/TableHelpers'
 
 @connectToStores
 export default class Table extends React.Component {
@@ -20,7 +20,16 @@ export default class Table extends React.Component {
         icon={SeverityIcon(item.get('severity'))}
         label={item.get('title')}
       >
-        <h1>HOW TO FIX YOUR {item.get('title').toUpperCase()}</h1>
+        <h1>how to fix your {item.get('title')}</h1>
+        <h2>{SeverityText(item.get('severity'))}</h2>
+        <ul>
+          {item.get('checkItems').map((x, i) => {
+            return <li key={i}>{ x.get('details') }</li>
+          })}
+        </ul>
+        <hr/>
+        <div dangerouslySetInnerHTML={{__html: item.get('advice')}} />
+        <div dangerouslySetInnerHTML={{__html: item.get('fixSteps')}} />
       </Tab>
     )
   }
