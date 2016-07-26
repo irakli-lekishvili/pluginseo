@@ -1,12 +1,12 @@
 import axios from 'axios'
-import { SeoActions } from 'actions' 
+import { API_URL } from 'consts'
+import { SeoActions } from 'actions'
 
 const SeoSource = {
   fetchSeo() {
     return {
       remote() {
-        const api_endpoint = 'https://www.pluginseo.com/api/developertest/seoproblems/result?u=pluginseo.com&format=json'
-        return axios.get(api_endpoint)
+        return axios.get(API_URL)
       },
 
       local() {
@@ -18,6 +18,5 @@ const SeoSource = {
       error:   SeoActions.seoFailed,
     }
   }
-};
-
-module.exports = SeoSource;
+}
+module.exports = SeoSource

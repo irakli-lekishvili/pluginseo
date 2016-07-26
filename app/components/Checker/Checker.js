@@ -4,16 +4,16 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import { SeoStore } from 'stores'
 import { SeoActions } from 'actions'
-
 import Spinner from 'react-spinkit'
 
 @connectToStores
-export default class extends React.Component {
+export default class Checker extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       url: ''
     }
+
     SeoStore.fetchSeo()
   }
 
