@@ -1,7 +1,18 @@
+import connectToStores from 'alt-utils/lib/connectToStores'
+import { SeoStore } from 'stores'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import { Header, Checker, Result } from 'components'
+import { Checker, Result, Loader } from 'components'
 
+@connectToStores
 export default class AppContainer extends React.Component {
+  static getStores() {
+    return [SeoStore]
+  }
+
+  static getPropsFromStores() {
+    return SeoStore.getState()
+  }
+
   render() {
     return (
       <div>
@@ -9,7 +20,10 @@ export default class AppContainer extends React.Component {
           <Checker />
         </MuiThemeProvider>
         <MuiThemeProvider>
-          <Result />
+          <Result seo={this.props.seo}/>
+        </MuiThemeProvider>
+        <MuiThemeProvider>
+          <Loader fetching={this.props.isFetching}/>
         </MuiThemeProvider>
       </div>
     )

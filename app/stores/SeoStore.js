@@ -8,31 +8,26 @@ import SeoSource from 'sources/SeoSource'
 export default class SeoStore {
   constructor() {
     this.state = {
-      todos: [],
-      seo: Immutable.Map({})
+      seo: Immutable.Map({}),
+      isFetching: false
     }
 
     this.registerAsync(SeoSource)
   }
 
-  @bind(SeoActions.updateTodo)
-  updateTodo(todo) {
-    // this.setState({ todos: this.state.todos.concat(todo) })
-  }
-
   @bind(SeoActions.FETCH_SEO)
   onFetchSeo() {
-    // this.state.IS_FETCHING = true
+    this.state.isFetching = true
   }
 
   @bind(SeoActions.UPDATE_SEO)
   updateSeo(data) {
     this.state.seo = Immutable.fromJS(data)
-    // this.state.seo.get('checks').map(x=> console.log(x))
+    this.state.isFetching = false
   }
 
   @bind(SeoActions.SEO_FAILED)
   onSeoFaild(message) {
-    // this.state.IS_FETCHING = false
+    this.state.isFetching = true
   }
 }

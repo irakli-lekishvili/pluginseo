@@ -1,16 +1,9 @@
-import connectToStores from 'alt-utils/lib/connectToStores'
-import { SeoStore } from 'stores'
-import {Tabs, Tab} from 'material-ui/Tabs'
+import { Tabs, Tab } from 'material-ui/Tabs'
 import { SeverityIcon, SeverityText } from 'helpers/TableHelpers'
 
-@connectToStores
 export default class Result extends React.Component {
-  static getStores() {
-    return [SeoStore]
-  }
-
-  static getPropsFromStores() {
-    return SeoStore.getState()
+  static propTypes = {
+    seo: React.PropTypes.object.isRequired
   }
 
   _renderCheck(item, index) {

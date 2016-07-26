@@ -3,7 +3,7 @@ import { API_URL } from 'consts'
 import { SeoActions } from 'actions'
 
 const SeoSource = {
-  fetchSeo() {
+  fetchSeo(url) {
     return {
       remote() {
         return axios.get(API_URL)
@@ -19,4 +19,5 @@ const SeoSource = {
     }
   }
 }
+
 module.exports = SeoSource
