@@ -1,7 +1,7 @@
 import AlertErrorOutline from 'material-ui/svg-icons/alert/error-outline'
 import NavigationCheck from 'material-ui/svg-icons/navigation/check'
 
-export function SeverityIcon(status) {
+export function severityIcon(status) {
   status = status.toLowerCase()
 
   if (status === 'warning')
@@ -10,7 +10,7 @@ export function SeverityIcon(status) {
     return <NavigationCheck />
 }
 
-export function SeverityText(status) {
+export function severityText(status) {
   status = status.toLowerCase()
   if (status === 'warning')
     return 'what\'s wrong'

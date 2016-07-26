@@ -3,12 +3,14 @@ import { SeoActions }  from 'actions'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
+import isURL from 'validator/lib/isURL'
 
 export default class Checker extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      url: ''
+      url: '',
+      isValidUrl: false
     }
   }
 
@@ -18,11 +20,21 @@ export default class Checker extends React.Component {
         <TextField
           hintText='Enter your domain here'
           value={this.state.url}
-          onChange={(e) => this.setState({url: e.target.value})}
+          onChange={::this._onChange}
         />
-        <RaisedButton onClick={::this._onClick}>Check</RaisedButton>
+        <RaisedButton
+          disabled={!this.state.isValidUrl}
+          onClick={::this._onClick}
+        >
+          Check
+        </RaisedButton>
       </div>
     )
+  }
+
+  _onChange(e) {
+    let value = e.target.value
+    this.setState({ url: value, isValidUrl: isURL(value) })
   }
 
   _onClick() {

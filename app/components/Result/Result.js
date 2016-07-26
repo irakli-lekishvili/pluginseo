@@ -1,5 +1,5 @@
 import { Tabs, Tab } from 'material-ui/Tabs'
-import { SeverityIcon, SeverityText } from 'helpers/TableHelpers'
+import { severityIcon, severityText } from 'helpers/TableHelpers'
 
 export default class Result extends React.Component {
   static propTypes = {
@@ -10,11 +10,11 @@ export default class Result extends React.Component {
     return (
       <Tab
         key={index}
-        icon={SeverityIcon(item.get('severity'))}
+        icon={severityIcon(item.get('severity'))}
         label={item.get('title')}
       >
         <h1>how to fix your {item.get('title')}</h1>
-        <h2>{SeverityText(item.get('severity'))}</h2>
+        <h2>{severityText(item.get('severity'))}</h2>
         <ul>
           {item.get('checkItems').map((x, i) => {
             return <li key={i}>{ x.get('details') }</li>
