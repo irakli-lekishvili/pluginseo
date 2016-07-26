@@ -1,4 +1,5 @@
 import { SeoStore } from 'stores'
+import { SeoActions }  from 'actions'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -17,14 +18,15 @@ export default class Checker extends React.Component {
         <TextField
           hintText='Enter your domain here'
           value={this.state.url}
-          onChange={(text) => this.setState({url: text.target.value})}
+          onChange={(e) => this.setState({url: e.target.value})}
         />
-        <RaisedButton onClick={::this.onClick}> Check </RaisedButton>
+        <RaisedButton onClick={::this._onClick}>Check</RaisedButton>
       </div>
     )
   }
 
-  onClick() {
-    SeoStore.fetchSeo(this.state.url)
+  _onClick() {
+    SeoActions.updateUrl(this.state.url)
+    SeoStore.fetchSeo()
   }
 }

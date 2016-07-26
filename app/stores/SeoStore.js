@@ -9,10 +9,16 @@ export default class SeoStore {
   constructor() {
     this.state = {
       seo: Immutable.Map({}),
-      isFetching: false
+      isFetching: false,
+      url: ''
     }
 
     this.registerAsync(SeoSource)
+  }
+
+  @bind(SeoActions.UPDATE_URL)
+  updateUrl(data) {
+    this.setState(data)
   }
 
   @bind(SeoActions.FETCH_SEO)

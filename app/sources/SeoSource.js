@@ -3,10 +3,10 @@ import { API_URL } from 'consts'
 import { SeoActions } from 'actions'
 
 const SeoSource = {
-  fetchSeo(url) {
+  fetchSeo(store) {
     return {
       remote() {
-        return axios.get(API_URL)
+        return axios.get(API_URL(store.state.url))
       },
 
       local() {
