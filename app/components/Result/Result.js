@@ -1,5 +1,6 @@
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { severityIcon, severityText } from 'helpers/TableHelpers'
+import './Result.css'
 
 export default class Result extends React.Component {
   static propTypes = {
@@ -29,7 +30,7 @@ export default class Result extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
         { this.props.seo.get('checks') &&
           <Tabs>
             { this.props.seo.get('checks').map((x, i) => this._renderCheck(x, i)) }

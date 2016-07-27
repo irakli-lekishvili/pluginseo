@@ -17,13 +17,13 @@ export default class AppContainer extends React.Component {
     return (
       <div>
         <MuiThemeProvider>
-          <Checker fetchError={this.props.fetchError}/>
+          <Checker fetchError={this.props.fetchError} />
         </MuiThemeProvider>
         <MuiThemeProvider>
-          <Result seo={this.props.seo}/>
+          <Result seo={this.props.seo} />
         </MuiThemeProvider>
         <MuiThemeProvider>
-          <Loader fetching={this.props.isFetching}/>
+          <Loader fetching={this.props.isFetching} />
         </MuiThemeProvider>
       </div>
     )
