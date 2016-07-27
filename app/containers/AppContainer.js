@@ -17,7 +17,7 @@ export default class AppContainer extends React.Component {
     return (
       <div>
         <MuiThemeProvider>
-          <Checker />
+          <Checker fetchError={this.props.fetchError}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <Result seo={this.props.seo}/>

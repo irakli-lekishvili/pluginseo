@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import isURL from 'validator/lib/isURL'
+import './Checker.css'
 
 export default class Checker extends React.Component {
   constructor(props) {
@@ -12,6 +13,10 @@ export default class Checker extends React.Component {
       url: '',
       isValidUrl: false
     }
+  }
+
+  static proptTypes = {
+    fetchError: React.PropTypes.string
   }
 
   render() {
@@ -23,11 +28,14 @@ export default class Checker extends React.Component {
           onChange={::this._onChange}
         />
         <RaisedButton
+          className='button-check'
           disabled={!this.state.isValidUrl}
           onClick={::this._onClick}
         >
           Check
         </RaisedButton>
+        <br/>
+        <span className='error-message'>{this.props.fetchError.message}</span>
       </div>
     )
   }

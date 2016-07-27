@@ -17,6 +17,6 @@ export default class SeoActions {
   }
 
   seoFailed(message) {
-    return {}
+    return message
   }
 }

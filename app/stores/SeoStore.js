@@ -10,7 +10,8 @@ export default class SeoStore {
     this.state = {
       seo: Immutable.Map({}),
       isFetching: false,
-      url: ''
+      url: '',
+      fetchError: ''
     }
 
     this.registerAsync(SeoSource)
@@ -23,17 +24,27 @@ export default class SeoStore {
 
   @bind(SeoActions.FETCH_SEO)
   onFetchSeo() {
+    this.clearFetchError()
+
     this.state.isFetching = true
   }
 
   @bind(SeoActions.UPDATE_SEO)
   updateSeo(data) {
+    console.log(data.statusCode);
+    this.clearFetchError()
+
     this.state.seo = Immutable.fromJS(data)
     this.state.isFetching = false
   }
 
   @bind(SeoActions.SEO_FAILED)
-  onSeoFaild(message) {
-    this.state.isFetching = true
+  onSeoFaild(fetchError) {
+    this.setState({ fetchError })
+    this.state.isFetching = false
+  }
+
+  clearFetchError() {
+    this.setState({ fetchError: '' })
   }
 }

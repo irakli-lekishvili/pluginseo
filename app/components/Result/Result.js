@@ -30,11 +30,11 @@ export default class Result extends React.Component {
   render() {
     return (
       <div>
-         <Tabs>
-           { this.props.seo.get('checks') &&
-             this.props.seo.get('checks').map((x, i) => this._renderCheck(x, i))
-           }
-        </Tabs>
+        { this.props.seo.get('checks') &&
+          <Tabs>
+            { this.props.seo.get('checks').map((x, i) => this._renderCheck(x, i)) }
+          </Tabs>
+        }
       </div>
     )
   }
