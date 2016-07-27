@@ -31,7 +31,6 @@ export default class SeoStore {
 
   @bind(SeoActions.UPDATE_SEO)
   updateSeo(data) {
-    console.log(data.statusCode);
     this.clearFetchError()
 
     this.state.seo = Immutable.fromJS(data)
