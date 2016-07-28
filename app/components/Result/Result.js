@@ -1,6 +1,6 @@
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { severityIcon, severityText } from 'helpers/TableHelpers'
-import './Result.css'
+import './Result.scss'
 
 export default class Result extends React.Component {
   static propTypes = {

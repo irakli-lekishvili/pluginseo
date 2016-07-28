@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import isURL from 'validator/lib/isURL'
-import './Checker.css'
+import './Checker.scss'
 
 export default class Checker extends React.Component {
   constructor(props) {
