@@ -2,9 +2,17 @@ import connectToStores from 'alt-utils/lib/connectToStores'
 import { SeoStore } from 'stores'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { Checker, Result, Loader } from 'components'
+import queryString from 'query-string'
 
 @connectToStores
 export default class AppContainer extends React.Component {
+  constructor(props) {
+    super(props)
+
+    const url = queryString.parse(location.search).url || ''
+    this.state = { url: url }
+  }
+
   static getStores() {
     return [SeoStore]
   }
@@ -17,7 +25,10 @@ export default class AppContainer extends React.Component {
     return (
       <div>
         <MuiThemeProvider>
-          <Checker fetchError={this.props.fetchError} />
+          <Checker
+            url={this.state.url}
+            fetchError={this.props.fetchError}
+          />
         </MuiThemeProvider>
         <MuiThemeProvider>
           <Result seo={this.props.seo} />

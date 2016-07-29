@@ -9,13 +9,17 @@ import './Checker.scss'
 export default class Checker extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
-      url: '',
+      url: props.url,
       isValidUrl: false
     }
+
+    if (props.url) this.fetchSeo()
   }
 
   static proptTypes = {
+    url: React.PropTypes.string,
     fetchError: React.PropTypes.string
   }
 
@@ -30,7 +34,7 @@ export default class Checker extends React.Component {
         <RaisedButton
           className='button-check'
           disabled={!this.state.isValidUrl}
-          onClick={::this._onClick}
+          onClick={::this.fetchSeo}
         >
           Check
         </RaisedButton>
@@ -45,7 +49,7 @@ export default class Checker extends React.Component {
     this.setState({ url: value, isValidUrl: isURL(value) })
   }
 
-  _onClick() {
+  fetchSeo() {
     SeoActions.updateUrl(this.state.url)
     SeoStore.fetchSeo()
   }

@@ -33,7 +33,12 @@ export default class SeoStore {
   updateSeo(data) {
     this.clearFetchError()
 
-    this.state.seo = Immutable.fromJS(data)
+    this.setState({ seo: Immutable.fromJS(data) })
+    if (data.executeResult == 'PasswordProtected')
+      this.setState({
+        fetchError: { message: 'Error: Cannot check a password-protected website' }
+      })
+
     this.state.isFetching = false
   }
 
